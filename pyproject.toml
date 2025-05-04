@@ -9,6 +9,7 @@ dependencies = [
     "pandas>=2.2.3",
     "requests>=2.32.3",
     "rich>=14.0.0",
+    "urllib3==1.26.15",
 ]
 
 [dependency-groups]
