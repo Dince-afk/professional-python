@@ -19,3 +19,9 @@ During development.
 ````bash
 PYTHON_ENV=development nodemon --exec uv run main.py```
 ````
+
+or run bash script
+
+```bash
+./dev.sh
+```
