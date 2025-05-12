@@ -8,6 +8,14 @@ Install uv to manage dependencies and run the project
 
 Run the script
 
+In production.
+
 ```bash
 uv run main.py
 ```
+
+During development.
+
+````bash
+PYTHON_ENV=development nodemon --exec uv run main.py```
+````

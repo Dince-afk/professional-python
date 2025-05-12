@@ -1,33 +1,32 @@
-import sys
 import logging
 import pandas as pd
 
-from src.utils.logger import setup_logger
+from src.utils.logger import setup_logging
 from src.api import fetch_data
+from src.data import clean_data
 
 
 def main():
-
-    setup_logger()
-
-    logging.info("Starting script...")
     try:
+        setup_logging()
+        logging.info("Starting script...")
         logging.info("Fetching data...")
         data = fetch_data()
 
         logging.info("Converting JSON to DataFrame...")
         todos_df = pd.DataFrame(data)
 
+        todos_df = clean_data(todos_df)
+
         logging.info("Saving todos to Excel...")
+
         todos_df.to_excel("todos.xlsx", index=False, sheet_name="Todos")
 
         logging.info("Script completed successfully.\n")
-        return 0
 
-    except Exception:
-        logging.exception("An error occurred:")
-        return 1
+    except Exception as e:
+        logging.error(e, exc_info=True)
 
 
 if __name__ == "__main__":
-    sys.exit(main())
+    main()
