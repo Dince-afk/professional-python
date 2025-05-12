@@ -3,7 +3,7 @@ import pandas as pd
 
 from src.utils.logger import setup_logging
 from src.api import fetch_data
-from src.data import clean_data
+from src.data import clean_data, transform_data
 
 
 def main():
@@ -17,6 +17,7 @@ def main():
         todos_df = pd.DataFrame(data)
 
         todos_df = clean_data(todos_df)
+        todos_df = transform_data(todos_df)
 
         logging.info("Saving todos to Excel...")
 
